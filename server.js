@@ -24,7 +24,20 @@ app.get('/api',(req,res)=>{
     res.json({msg:"Home here"})
 })
 
-app.get('/api/all', async(req,res)=>{
+app.get('/api/patients', async(req,res)=>{
+    try {
+        let query = `SELECT * FROM patients`
+        pool.query(query, (err,result) => {
+          if (err) {return (err)}
+          res.json(result);
+        })
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Error fetching data from the database.');
+    }
+})
+
+app.get('/api/patient/', async(req,res)=>{
     try {
         let query = `SELECT * FROM patients`
         pool.query(query, (err,result) => {

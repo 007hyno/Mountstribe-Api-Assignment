@@ -16,9 +16,9 @@
 > * StackOverFlow - 
 
 # Api Links:
-> localhost:8080/api/register [link](localhost:8080/api/register) `To register new patient`
+> localhost:8080/api/register [link](http://localhost:8080/api/customQuery/26) `To register new patient`
 
-> localhost:8080/api/customQuery/26 [link](localhost:8080/api/customQuery/26) `Fetch all the psychiatrists, their count along with IDs and patient details for a hospital`
+> localhost:8080/api/customQuery/26 [link](http://localhost:8080/api/customQuery/26) `Fetch all the psychiatrists, their count along with IDs and patient details for a hospital`
 
 
 #### References

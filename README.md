@@ -8,14 +8,15 @@
 > npm start
 
 # Resource Used
-> * Express - 
-> * MySql - 
-> * Validate Js - 
-> * Nodemon -
-> * StackOver Flow -
+> * Express - `to manage servers and routes`
+> * MySql -  `to accesss mysql function in node js`
+> * Nodemon -  `Auto refresh server after code update`
+> * express-rate-limit -  `Limit the rate of unwanted traffic and DOS attack`
+> * express-validator -  `Validate Input data`
+> * StackOverFlow - 
 
 # Api Links
-> localhost://api/test [click here.](http://postman.com)
+> localhost:8080/api/register [click here.](http://postman.com)//To register new patient
 > localhost:8080/api/patient/26 [Postman]()
 
 

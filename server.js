@@ -1,6 +1,8 @@
 import express from 'express'
 import {} from 'dotenv/config'
 const app = express();
+import  rateLimit from "express-rate-limit"
+
 const PORT= process.env.PORT || 8080
 import { check, validationResult } from 'express-validator' //for form validation
 import multer from 'multer' // for image extention validation
@@ -13,14 +15,39 @@ import  bodyParser from 'body-parser'
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//rate limiter START
+const totalReqLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 7, // Testing limit 
+    legacyHeaders: false,
+    standardHeaders: true,
+    message: "Too many requests, please try again later"
+  })
 
+  const authLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max:3,// Limit in integer
+    legacyHeaders: false,
+    standardHeaders: true,
+    message: "Too many LogIn / SignIn requests, please try again later"
+  })
+//rate limiter END
 
-// //MiddleWare
+// MiddleWare START
 // app.use('/api',(req,res,next)=>{
 //     if(MS.con())//checking database connection
 //     console.warn("Middleware activated")
 //     next();
 // })
+
+app.use(totalReqLimiter);
+
+app.use((req, res, next) => {
+      console.log('Traffic from IP: '+req.socket.remoteAddress)
+    next()
+  })
+
+// //MiddleWare END
 
 app.get('/api',(req,res)=>{
     res.json({msg:"Home here"})
@@ -53,7 +80,7 @@ app.get('/api/patient/:patientId', async(req,res)=>{
 })
 
 
-app.post('/api/register',[
+app.post('/api/register',authLimiter,[
     check('name').isLength({ min: 3 }).withMessage('Name must be at least 3 characters'),
     check('address').isLength({ min: 10 }).withMessage('Address must be at least 10 characters'),
     check('email').isEmail().withMessage('Invalid email address'),

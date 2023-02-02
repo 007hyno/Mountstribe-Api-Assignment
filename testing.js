@@ -45,6 +45,7 @@ export const selectAll = () => {
       if (err) throw err;
       return console.log(result);
     })
-  }
+  } 
+  
   
   

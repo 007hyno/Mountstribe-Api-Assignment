@@ -16,10 +16,11 @@
 > * StackOverFlow - 
 
 ## Api Links:
-#### Register a new Patient
+#### Register a new Patient  
 ```http
-> localhost:8080/api/register
-``` [link](http://localhost:8080/api/register)
+localhost:8080/api/register
+```
+> [link](http://localhost:8080/api/register) `Register new Patients`
 
 
 | Body Parameter | Type     | Description                |
@@ -33,7 +34,9 @@
 | `psychiatrist_id` | `int` | **Required**.|
 
 ```http
-> localhost:8080/api/customQuery/{hospital_id}``` [link](http://localhost:8080/api/customQuery/2) `Fetch all the psychiatrists, their count along with IDs and patient details for a hospital`
+localhost:8080/api/customQuery/{hospital_id}
+```
+ > [link](http://localhost:8080/api/customQuery/2) `Fetch all the psychiatrists, their count along with IDs and patient details for a hospital`
 
 
 | Return | Type     | Description                |

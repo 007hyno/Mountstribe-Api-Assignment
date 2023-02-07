@@ -12,7 +12,6 @@ import {pool} from "./database.js"
 // import {insertOne,selectAll,/q1,pool} from "./database.js"
 
 //Validators
-import { registerValidation } from './middlewares/validators.js';
 
 //routes
 import hospitalDet from './routes/hospital/details.js';
@@ -36,26 +35,14 @@ app.get('/api',(req,res)=>{
     res.json({msg:"API is working.."})
 })
 
+//ROUTES _start_
 app.use('/api/hospitalDet',hospitalDet)
 app.use('/api/psyReg',psyReg)
 app.use('/api/patientReg',patientReg)
-
 app.use('/api/psyLogin',psyLogin)
-
 app.use('/api/custom1/',custom1)
-
-// app.use('/api/custom1/:hospitalId', (req, res) => {
-//     let para = req.params.hospitalId
-//     console.log(para);
-//     custom1(req, res);    
-//   });
-
-app.use('/api/psyLogin',psyLogin)
-app.use('/api/patientDet',patientDet)
-
+//ROUTES _end_
 
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
   })
-
-// module.exports = app; //make app accessable outside this file

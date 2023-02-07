@@ -1,6 +1,6 @@
 import {register,login} from "../models/psychiatrist.js";
 import bcrypt from "bcrypt"
-
+import jwt from "jsonwebtoken"
 export const registerPsy = async (req,res)=>{
     try{
         const data = await register(req.body)
@@ -25,13 +25,14 @@ export const loginPsy = async (req,res)=>{
                 });
               }
                 console.log("🎈🎈🎈lesgOOOO!!🎈🎈🎈");
-                // process.env.JWT_SECRET
+                // JWT token genration
                 const token = jwt.sign({
                     email: data.data[0].email,
                     id: data.data[0].id
                   }, process.env.JWT_SECRET, {
                     expiresIn: '1h'
                   });
+
                   res.status(200).json({message :data.data,
                   token:token
                   });

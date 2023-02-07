@@ -4,4 +4,5 @@ import { loginPsy } from '../../controllers/psychiatristController.js';
 
 psyLogin.post('/',loginPsy)
 
+
 export default psyLogin;

@@ -10,7 +10,7 @@ export const verifyToken=(req, res, next) =>{
   const bearerToken = bearer[1];
   req.token = bearerToken;
 
-  jwt.verify(req.token, "secretKey", (err, user) => {
+  jwt.verify(req.token, process.env.JWT_SECRET, (err, user) => {
      if (err) {
         return res.status(401).json({ error: "Invalid token" });
      }
